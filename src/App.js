@@ -14,13 +14,16 @@ class App extends React.Component {
 
     render =() =>{
         const accountName = this.props.accountName;
+        const accountBalance = this.props.accountBalance;
+        const accountBudget = this.props.accountBudget;
         return(
             <div className="App-header">
 
                 <h1>Budgie</h1>
-                <h2>Welcome Back {accountName}</h2>
+                <h2>Welcome Back {accountName}!</h2>
                 <article id="spending">
-                    <p>Budget:</p>
+                    <p>Budget: {accountBudget}</p>
+                    <p>Balance: {accountBalance}</p>
                     <p>Total spent this month:</p>
                 </article>
                 <article id="budgeting">

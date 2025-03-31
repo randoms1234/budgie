@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import App from "./App";
+let url = 'https://dev.connorrichardson.co.uk/api.php?';
 class Account extends React.Component {
 
     constructor(props) {
@@ -8,12 +9,15 @@ class Account extends React.Component {
         this.state ={
             accountState: 0,
             accountBalance: 0,
+            accountBudget: 0,
             accountName: ''
         };
     }
     render() {
         if ( this.state.accountState === 1){
-            return <App accountName={this.state.accountName}/>;
+            return <App accountName={this.state.accountName}
+            accountBalance={this.state.accountBalance}
+            accountBudget={this.state.accountBudget}/>;
         }
         return (
             <div className="App-header">
@@ -29,7 +33,7 @@ class Account extends React.Component {
                     </form>
                 </div>
                 <div className="login">
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmitLogin}>
                         <input type="email" placeholder="Example@Example.com" name="Email"/>
                         <input type="password" placeholder="Password" name="Password"/>
                         <input type="submit" value="Submit"/>
@@ -37,9 +41,11 @@ class Account extends React.Component {
 
                 </div>
                 <div className="createAccount">
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="email" placeholder="Example@Example.com" name="Email"/>
-                        <input type="password" placeholder="Password" name="Password"/>
+                    <form onSubmit={this.handleSubmitCreate}>
+                        <input type="text" placeholder="Name" name="Name"/>
+                        <input type="text" placeholder="Budget" name="budget"/>
+                        <input type="email" placeholder="Example@Example.com" name="createEmail"/>
+                        <input type="password" placeholder="Password" name="createPassword"/>
                         <input type="submit" value="Submit" name="createAcc"/>
                     </form>
                 </div>
@@ -59,9 +65,68 @@ class Account extends React.Component {
 
 
     }
-
-    handleSubmit = async (evt) => {
+    handleSubmitCreate = async (evt) => {
         evt.preventDefault();
+        let username = document.querySelector('input[name="createEmail"]').value;
+        let password = document.querySelector('input[name="createPassword"]').value;
+        let name = document.querySelector('input[name="Name"]').value;
+        let budget = document.querySelector('input[name="budget"]').value;
+
+        const accountData = {
+            username: username,
+            password: password,
+            name: name,
+            balance: 0,
+            budget: budget
+        }
+        console.log(JSON.stringify(accountData));
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(accountData)
+        })
+            .then(response => {
+                if (response.ok) {
+                    return <Account/>
+                }else {
+                    throw new Error('Something went wrong');
+                }
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+
+
+    }
+
+    handleSubmitLogin = async (evt) => {
+        evt.preventDefault();
+
+
+        let username = document.querySelector('input[name="Email"]').value;
+        let password = document.querySelector('input[name="Password"]').value;
+        url= url + 'username=' + username;
+        try{
+            const response = await fetch(url);
+            const JsonData = await response.json();
+            console.log(JsonData);
+            this.setState({
+                accountName: JsonData.Name,
+                accountState: 1,
+                accountBalance: JsonData.balance,
+                accountBudget: JsonData.budget
+
+            });
+        } catch (error) {
+            console.log(error);
+        }
 
 
 
