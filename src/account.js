@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import App from "./App";
-let url = 'https://dev.connorrichardson.co.uk/api.php?';
+let url = 'https://dev.connorrichardson.co.uk/api.php';
 class Account extends React.Component {
 
     constructor(props) {
@@ -17,7 +17,8 @@ class Account extends React.Component {
         if ( this.state.accountState === 1){
             return <App accountName={this.state.accountName}
             accountBalance={this.state.accountBalance}
-            accountBudget={this.state.accountBudget}/>;
+            accountBudget={this.state.accountBudget}
+            accountUsername = {this.state.accountUsername}/>;
         }
         return (
             <div className="App-header">
@@ -38,6 +39,7 @@ class Account extends React.Component {
                         <input type="password" placeholder="Password" name="Password"/>
                         <input type="submit" value="Submit"/>
                     </form>
+                    <p id="unpw">Incorrect Username or password!</p>
 
                 </div>
                 <div className="createAccount">
@@ -79,7 +81,7 @@ class Account extends React.Component {
             balance: 0,
             budget: budget
         }
-        console.log(JSON.stringify(accountData));
+        //console.log(JSON.stringify(accountData));
 
         fetch(url, {
             method: 'POST',
@@ -90,7 +92,7 @@ class Account extends React.Component {
         })
             .then(response => {
                 if (response.ok) {
-                    return <Account/>
+                    <Account/>;
                 }else {
                     throw new Error('Something went wrong');
                 }
@@ -112,18 +114,24 @@ class Account extends React.Component {
 
         let username = document.querySelector('input[name="Email"]').value;
         let password = document.querySelector('input[name="Password"]').value;
-        url= url + 'username=' + username;
+        url= url +'?username=' + username + '&password=' + password;
         try{
             const response = await fetch(url);
             const JsonData = await response.json();
-            console.log(JsonData);
-            this.setState({
-                accountName: JsonData.Name,
-                accountState: 1,
-                accountBalance: JsonData.balance,
-                accountBudget: JsonData.budget
+            if (JsonData.error){
+                document.querySelector('#unpw').style.display = 'block';
 
-            });
+            }else {
+                this.setState({
+                    accountName: JsonData.Name,
+                    accountUsername: JsonData.username,
+                    accountState: 1,
+                    accountBalance: JsonData.balance,
+                    accountBudget: JsonData.budget
+
+                });
+            }
+
         } catch (error) {
             console.log(error);
         }
@@ -133,7 +141,6 @@ class Account extends React.Component {
     }
 
     handleCreateAccount = () => {
-        // Logic for creating an account
         document.querySelector('.start').style.display = 'none';
         document.querySelector('.createAccount').style.display = 'block';
 
@@ -144,8 +151,6 @@ class Account extends React.Component {
         document.querySelector('.start').style.display = 'none';
         document.querySelector('.login').style.display = 'block';
 
-
-        // Logic for handling login
 
     }
 }

@@ -1,21 +1,23 @@
 import React from 'react';
 import './App.css';
 import Result from "./Result.js"
+import Account from "./account.js"
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            income: this.income,
-            spendtype: this.spendtype,
-            spendamt: this.spendamt,
+            accountBudget: this.props.accountBudget,
+            accountUsername: this.props.accountUsername,
+            accountBalance: this.props.accountBalance,
+            spendamt: '',
         };
     }
 
     render =() =>{
-        const accountName = this.props.accountName;
+         const accountName = this.props.accountName;
         const accountBalance = this.props.accountBalance;
-        const accountBudget = this.props.accountBudget;
+         const accountBudget = this.props.accountBudget;
         return(
             <div className="App-header">
 
@@ -28,11 +30,7 @@ class App extends React.Component {
                 </article>
                 <article id="budgeting">
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" placeholder="Income" name="income"/>
-                        <input type="text" placeholder="Spending" name="spendamt"/>
-                        <input type="radio" value="bills" name="spend"/>
-                        <input type="radio" value="entertainment" name="spend"/>
-                        <input type="radio" value="other" name="spend"/>
+                        <input type="text" placeholder="Amount Spent?" name="spendamt"/>
                         <input type="submit" value="Submit"/>
                     </form>
                 </article>
@@ -43,13 +41,13 @@ class App extends React.Component {
     }
     handleSubmit = async (evt) =>{
         evt.preventDefault();
-        let spendamt =document.querySelector('input[name="spendamt"]').value;
-        let income = document.querySelector('input[name="income"]').value;
-        let spend = document.querySelector('input[name="spend"]:checked').value;
+        let spendamt = document.querySelector('input[name="spendamt"]').value;
+
         this.setState({
-            income: income,
-            spendtype: spend,
-            sendamt: spendamt
+            accountBudget: this.state.accountBudget,
+            accountUsername: this.state.accountUsername,
+            accountBalance: this.state.accountBalance,
+            spendamt: spendamt
         });
     }
 }
