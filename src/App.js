@@ -11,12 +11,14 @@ class App extends React.Component {
             accountUsername: this.props.accountUsername,
             accountBalance: this.props.accountBalance,
             spendamt: '',
+            addmoney: '',
+            newBudget: '',
+            stateid: 0
         };
     }
 
     render =() =>{
          const accountName = this.props.accountName;
-        const accountBalance = this.props.accountBalance;
          const accountBudget = this.props.accountBudget;
         return(
             <div className="App-header">
@@ -25,32 +27,71 @@ class App extends React.Component {
                 <h2>Welcome Back {accountName}!</h2>
                 <article id="spending">
                     <p>Budget: {accountBudget}</p>
-                    <p>Balance: {accountBalance}</p>
+                    <Result state={this.state}/>
                     <p>Total spent this month:</p>
                 </article>
                 <article id="budgeting">
+                    <p>Add income or add spending</p>
+                    <br></br>
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" placeholder="Amount Spent?" name="spendamt"/>
+                        <label>Add income</label>
+                        <input type="radio" name="addmoney" value="1"/>
+                        <label>Add Spending</label>
+                        <input type="radio" name="addmoney" value="2"/>
+                        <input type="text" placeholder="Enter amount" name="spendamt"/>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                    <button onClick={this.budgetButton}>Change Budget</button>
+                    <form onSubmit={this.handleBudgetChange} id="budgetChange">
+                        <input type="text" placeholder="Enter new budget" name="budget"/>
                         <input type="submit" value="Submit"/>
                     </form>
                 </article>
-                <Result state={this.state}/>
+
             </div>
 
         );
     }
+
+    budgetButton = () =>{
+        document.querySelector('#budgetChange').style.display = 'block';
+    }
+    handleBudgetChange = async (evt) =>{
+        evt.preventDefault();
+        console.log("budget change");
+        //NOT FUNCTIONAL
+
+        /*let newBudget = document.querySelector('input[name="budget"]').value;
+        this.setState({
+            newBudget: newBudget,
+            accountUsername: this.state.accountUsername,
+            accountBalance: this.state.accountBalance,
+            stateid:1
+        })
+        this.setState({
+            newBudget: newBudget,
+            accountUsername: this.state.accountUsername,
+            accountBalance: this.state.accountBalance,
+            stateid:1
+
+        });*/
+        document.querySelector('#budgetChange').style.display = 'none';
+    }
     handleSubmit = async (evt) =>{
         evt.preventDefault();
         let spendamt = document.querySelector('input[name="spendamt"]').value;
+        let addmoney = document.querySelector('input[name="addmoney"]:checked').value;
 
         this.setState({
             accountBudget: this.state.accountBudget,
             accountUsername: this.state.accountUsername,
             accountBalance: this.state.accountBalance,
-            spendamt: spendamt
+            spendamt: spendamt,
+            addmoney: addmoney
         });
     }
 }
 
 
 export default App;
+//TODO: add chanage budget functionality react and server side
