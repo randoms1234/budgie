@@ -12,7 +12,8 @@ class App extends React.Component {
             spendamt: '',
             addmoney: '',
             newBudget: '',
-            stateid: 0
+            stateid: 0,
+            accountSpent: this.props.accountSpent,
         };
     }
 
@@ -25,7 +26,6 @@ class App extends React.Component {
                 <h2>Welcome Back {accountName}!</h2>
                 <article id="spending">
                     <Result state={this.state}/>
-                    <p>Total spent this month:</p>
                 </article>
                 <article id="budgeting">
                     <p>Add income or add spending</p>
@@ -74,11 +74,11 @@ class App extends React.Component {
             accountBalance: this.state.accountBalance,
             spendamt: spendamt,
             addmoney: addmoney,
-            stateid: 0
+            stateid: 0,
+            accountSpent: this.state.accountSpent,
         });
     }
 }
 
 
 export default App;
-//TODO: add chanage budget functionality react and server side

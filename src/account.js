@@ -10,7 +10,8 @@ class Account extends React.Component {
             accountState: 0,
             accountBalance: 0,
             accountBudget: 0,
-            accountName: ''
+            accountName: '',
+            accountSpent: 0
         };
     }
     render() {
@@ -18,7 +19,8 @@ class Account extends React.Component {
             return <App accountName={this.state.accountName}
             accountBalance={this.state.accountBalance}
             accountBudget={this.state.accountBudget}
-            accountUsername = {this.state.accountUsername}/>;
+            accountUsername = {this.state.accountUsername}
+            accountSpent = {this.state.accountSpent}/>;
         }
         return (
             <div className="App-header">
@@ -127,7 +129,8 @@ class Account extends React.Component {
                     accountUsername: JsonData.username,
                     accountState: 1,
                     accountBalance: JsonData.balance,
-                    accountBudget: JsonData.budget
+                    accountBudget: JsonData.budget,
+                    accountSpent: JsonData.spent
 
                 });
             }
