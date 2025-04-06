@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Result from "./Result.js"
-import Account from "./account.js"
 
 class App extends React.Component {
     constructor(props) {
@@ -19,14 +18,12 @@ class App extends React.Component {
 
     render =() =>{
          const accountName = this.props.accountName;
-         const accountBudget = this.props.accountBudget;
         return(
             <div className="App-header">
 
                 <h1>Budgie</h1>
                 <h2>Welcome Back {accountName}!</h2>
                 <article id="spending">
-                    <p>Budget: {accountBudget}</p>
                     <Result state={this.state}/>
                     <p>Total spent this month:</p>
                 </article>
@@ -58,23 +55,12 @@ class App extends React.Component {
     }
     handleBudgetChange = async (evt) =>{
         evt.preventDefault();
-        console.log("budget change");
-        //NOT FUNCTIONAL
-
-        /*let newBudget = document.querySelector('input[name="budget"]').value;
+        let newBudget = document.querySelector('input[name="budget"]').value;
         this.setState({
             newBudget: newBudget,
             accountUsername: this.state.accountUsername,
-            accountBalance: this.state.accountBalance,
             stateid:1
-        })
-        this.setState({
-            newBudget: newBudget,
-            accountUsername: this.state.accountUsername,
-            accountBalance: this.state.accountBalance,
-            stateid:1
-
-        });*/
+        });
         document.querySelector('#budgetChange').style.display = 'none';
     }
     handleSubmit = async (evt) =>{
@@ -87,7 +73,8 @@ class App extends React.Component {
             accountUsername: this.state.accountUsername,
             accountBalance: this.state.accountBalance,
             spendamt: spendamt,
-            addmoney: addmoney
+            addmoney: addmoney,
+            stateid: 0
         });
     }
 }
