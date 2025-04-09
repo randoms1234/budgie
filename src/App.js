@@ -82,3 +82,7 @@ class App extends React.Component {
 
 
 export default App;
+//TODO:{
+// fix css on App.js
+// Look at what else needs to be added
+// }

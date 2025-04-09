@@ -7,7 +7,7 @@ class Result extends React.Component {
         super(props);
         this.state = {
             stateid: 0,
-            accountBudget: this.props.state.accountBudget, // Initialize state
+            accountBudget: this.props.state.accountBudget,
             accountSpent: this.props.state.accountSpent,
         };
     }

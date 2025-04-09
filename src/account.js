@@ -22,8 +22,12 @@ class Account extends React.Component {
             accountUsername = {this.state.accountUsername}
             accountSpent = {this.state.accountSpent}/>;
         }
+        else if (this.state.accountState === 2){
+            return <Account/>;
+        }
+
         return (
-            <div className="App-header">
+            <div className="App-headera">
                 <h1>Hello!</h1>
                 <h1>Welcome to Budgie!</h1>
                 <div className="start">
@@ -42,6 +46,7 @@ class Account extends React.Component {
                         <input type="submit" value="Submit"/>
                     </form>
                     <p id="unpw">Incorrect Username or password!</p>
+                    <button id="back" onClick={this.goBack}>Back</button>
 
                 </div>
                 <div className="createAccount">
@@ -52,18 +57,24 @@ class Account extends React.Component {
                         <input type="password" placeholder="Password" name="createPassword"/>
                         <input type="submit" value="Submit" name="createAcc"/>
                     </form>
+                    <p id="acc">Already have an account</p>
+                    <button id="back" onClick={this.goBack}>Back</button>
                 </div>
             </div>
         );
 
 
     }
+    goBack = () => {
+       this.setState({
+           accountState: 2
+       })
+    }
 
     handleInput = async (evt) => {
         evt.preventDefault();
         const createButton = document.querySelector('#create');
         const loginButton = document.querySelector('#login');
-        // Add event listeners for the buttons
         createButton.onclick = this.handleCreateAccount;
         loginButton.onclick = this.handleLogin;
 
@@ -83,7 +94,6 @@ class Account extends React.Component {
             balance: 0,
             budget: budget
         }
-        //console.log(JSON.stringify(accountData));
 
         fetch(url, {
             method: 'POST',
@@ -94,13 +104,21 @@ class Account extends React.Component {
         })
             .then(response => {
                 if (response.ok) {
-                    <Account/>;
+                   return response.json();
                 }else {
                     throw new Error('Something went wrong');
                 }
             })
             .then(data => {
-                console.log(data);
+                if (data.error){
+                    document.querySelector('#acc').style.display = 'block';
+                }else{
+                    this.setState({
+                            accountState: 2
+                        }
+                    )
+                }
+
             })
             .catch(error => {
                 console.log(error);
