@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Result from "./Result.js"
+let but = 0;
 
 class App extends React.Component {
     constructor(props) {
@@ -52,8 +53,15 @@ class App extends React.Component {
     }
 
     budgetButton = () =>{
-        document.querySelector('#budgetChange').style.display = 'block';
-        document.querySelector('#budgBut').style.display = 'none';
+        if(but === 0){
+            document.querySelector('#budgetChange').style.display = 'block';
+            but = 1;
+        }else{
+            document.querySelector('#budgetChange').style.display = 'none';
+            but = 0;
+        }
+
+        //document.querySelector('#budgBut').style.display = 'none';
     }
     handleBudgetChange = async (evt) =>{
         evt.preventDefault();
