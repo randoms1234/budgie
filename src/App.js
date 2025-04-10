@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Result from "./Result.js"
+import Account from "./account";
 let but = 0;
 
 class App extends React.Component {
@@ -20,6 +21,9 @@ class App extends React.Component {
     }
 
     render =() =>{
+        if (this.state.stateid === 2){
+            return <Account/>;
+        }
          const accountName = this.props.accountName;
         return(
             <div className="App-header">
@@ -46,10 +50,22 @@ class App extends React.Component {
                         <input type="submit" value="Submit"/>
                     </form>
                 </article>
+                <button id="logout" onClick={this.logout}>Logout</button>
 
             </div>
 
         );
+    }
+
+    logout = () =>{
+        this.setState({
+            accountUsername: '',
+            accountBalance: '',
+            accountBudget: '',
+            accountSpent: '',
+            accountIncome: '',
+            stateid: 2
+        });
     }
 
     budgetButton = () =>{
@@ -61,7 +77,6 @@ class App extends React.Component {
             but = 0;
         }
 
-        //document.querySelector('#budgBut').style.display = 'none';
     }
     handleBudgetChange = async (evt) =>{
         evt.preventDefault();
@@ -94,6 +109,4 @@ class App extends React.Component {
 
 export default App;
 //TODO:{
-// fix css on App.js
-// Look at what else needs to be added
-// }
+// look into why login isnt working 100%}

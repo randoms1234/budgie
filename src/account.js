@@ -16,6 +16,7 @@ class Account extends React.Component {
         };
     }
     render() {
+        console.log(this.state);
         if ( this.state.accountState === 1){
             return <App accountName={this.state.accountName}
             accountBalance={this.state.accountBalance}
