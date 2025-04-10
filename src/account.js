@@ -11,7 +11,8 @@ class Account extends React.Component {
             accountBalance: 0,
             accountBudget: 0,
             accountName: '',
-            accountSpent: 0
+            accountSpent: 0,
+            accountIncome: 0
         };
     }
     render() {
@@ -20,7 +21,8 @@ class Account extends React.Component {
             accountBalance={this.state.accountBalance}
             accountBudget={this.state.accountBudget}
             accountUsername = {this.state.accountUsername}
-            accountSpent = {this.state.accountSpent}/>;
+            accountSpent = {this.state.accountSpent}
+            accountIncome = {this.state.accountIncome}/>;
         }
         else if (this.state.accountState === 2){
             return <Account/>;
@@ -148,7 +150,8 @@ class Account extends React.Component {
                     accountState: 1,
                     accountBalance: JsonData.balance,
                     accountBudget: JsonData.budget,
-                    accountSpent: JsonData.spent
+                    accountSpent: JsonData.spent,
+                    accountIncome: JsonData.tot_income
 
                 });
             }

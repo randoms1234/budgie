@@ -18,7 +18,7 @@ html{
 
 .App-header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* Two equal columns */
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
   gap: 20px; /* Spacing between grid items */
   padding: 20px;
   justify-items: center; /* Center items horizontally */
@@ -44,6 +44,7 @@ html{
   min-height: 100vh; /* Ensure the container takes up the full height of the screen */
   text-align: center;
   padding: 20px;
+  font-size: calc(10px + 2vmin);
   color: white;
 }
 
@@ -51,6 +52,20 @@ html{
   margin: 10px 0; /* Add vertical spacing between headings */
 }
 
+.start,
+.login,
+.createAccount,
+#budgeting, #spending{
+  justify-content: center; /* Center content within the form container */
+  margin: 20px 0; /* Vertical spacing between sections */
+  padding: 20px 55px 20px 20px;
+  width: 100%;
+  max-width: 400px; /* Restrict the form container width */
+  background-color: #ffffff; /* Optional: Add white background for forms */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a light shadow for aesthetics */
+  border-radius: 8px; /* Optional: Rounded corners */
+  color: black;
+}
 .start,
 .login,
 .createAccount {
@@ -83,33 +98,42 @@ html{
 .start button,
 .login button,
 .createAccount button,
+#budgeting button,
+#spending button,
 .start input,
 .login input,
-.createAccount input {
+.createAccount input,
+#budgeting input,
+#spending input{
   margin: 10px 0 10px 10px;
   width: 100%; /* Form inputs/buttons take full width of the container */
   padding: 10px; /* Add padding for better usability */
   font-size: 1rem; /* Adjust font size for readability */
 }
-.createAccount button, .createAccount input[type="submit"], .login button, .login input[type="submit"] {
+.createAccount button,
+.createAccount input[type="submit"],
+.login button,
+.login input[type="submit"],
+#budgeting button,
+#budgeting input[type="submit"],
+#spending button,
+#spending input[type="submit"]{
   margin-left: 20px !important;
 }
-
-#spending,
-#budgeting {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+#budgeting, #spending{
+  text-align: center;
 }
 @media (max-width: 768px) { /* For screens smaller than 768px (tablet and smartphone sizes) */
   .App-header {
     grid-template-columns: 1fr; /* Use a single column layout */
     gap: 10px; /* Reduce gap between elements */
   }
-
+  .start,
+  .login,
+  .createAccount,
   #spending,
   #budgeting {
-    width: 100%; /* Ensure articles span full width of the container on mobile */
+    width: 80%;
   }
 }
 

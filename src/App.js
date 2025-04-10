@@ -14,6 +14,7 @@ class App extends React.Component {
             newBudget: '',
             stateid: 0,
             accountSpent: this.props.accountSpent,
+            accountIncome: this.props.accountIncome,
         };
     }
 
@@ -31,16 +32,16 @@ class App extends React.Component {
                     <p>Add income or add spending</p>
                     <br></br>
                     <form onSubmit={this.handleSubmit}>
-                        <label>Add income</label>
-                        <input type="radio" name="addmoney" value="1"/>
-                        <label>Add Spending</label>
-                        <input type="radio" name="addmoney" value="2"/>
+                        <label>Add income <input type="radio" name="addmoney" value="1"/></label>
+
+                        <label>Add Spending <input type="radio" name="addmoney" value="2"/></label>
+
                         <input type="text" placeholder="Enter amount" name="spendamt"/>
                         <input type="submit" value="Submit"/>
                     </form>
-                    <button onClick={this.budgetButton}>Change Budget</button>
+                    <button onClick={this.budgetButton} id="budgBut">Change Budget Goal</button>
                     <form onSubmit={this.handleBudgetChange} id="budgetChange">
-                        <input type="text" placeholder="Enter new budget" name="budget"/>
+                        <input type="text" placeholder="Enter new Budget Goal" name="budget"/>
                         <input type="submit" value="Submit"/>
                     </form>
                 </article>
@@ -52,6 +53,7 @@ class App extends React.Component {
 
     budgetButton = () =>{
         document.querySelector('#budgetChange').style.display = 'block';
+        document.querySelector('#budgBut').style.display = 'none';
     }
     handleBudgetChange = async (evt) =>{
         evt.preventDefault();
@@ -76,6 +78,7 @@ class App extends React.Component {
             addmoney: addmoney,
             stateid: 0,
             accountSpent: this.state.accountSpent,
+            accountIncome: this.state.accountIncome,
         });
     }
 }
