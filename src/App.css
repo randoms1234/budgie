@@ -35,6 +35,12 @@ html{
   text-align: center; /* Keep text centered */
   width: 100%; /* Explicitly make the element span the full container width */
 }
+.App-header p, .App-headera p{
+  padding-left: 1em;
+}
+.result h3{
+  padding-left: 0.5em;
+}
 
 .App-headera {
   display: flex; /* Use Flexbox for easy centering */

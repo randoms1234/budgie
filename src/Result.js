@@ -69,7 +69,7 @@ class Result extends React.Component {
         };
 
         return (
-            <div>
+            <div className="result">
                 <h3>Your Stats</h3>
                 <p>
                     Budget Goal: <strong>£{accountBudget}</strong>

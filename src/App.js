@@ -29,13 +29,12 @@ class App extends React.Component {
             <div className="App-header">
 
                 <h1>Budgie</h1>
-                <h2>Welcome Back {accountName}!</h2>
+                <h2>Welcome {accountName}!</h2>
                 <article id="spending">
                     <Result state={this.state}/>
                 </article>
                 <article id="budgeting">
-                    <p>Add income or add spending</p>
-                    <br></br>
+                    <h3>Add income or add spending</h3>
                     <form onSubmit={this.handleSubmit}>
                         <label>Add income <input type="radio" name="addmoney" value="1"/></label>
 
@@ -49,9 +48,8 @@ class App extends React.Component {
                         <input type="text" placeholder="Enter new Budget Goal" name="budget"/>
                         <input type="submit" value="Submit"/>
                     </form>
+                    <button id="logout" onClick={this.logout}>Logout</button>
                 </article>
-                <button id="logout" onClick={this.logout}>Logout</button>
-
             </div>
 
         );
@@ -108,5 +106,3 @@ class App extends React.Component {
 
 
 export default App;
-//TODO:{
-// look into why login isnt working 100%}

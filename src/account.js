@@ -16,8 +16,8 @@ class Account extends React.Component {
         };
     }
     render() {
-        console.log(this.state);
         if ( this.state.accountState === 1){
+            url = 'https://dev.connorrichardson.co.uk/api.php';
             return <App accountName={this.state.accountName}
             accountBalance={this.state.accountBalance}
             accountBudget={this.state.accountBudget}
@@ -35,8 +35,7 @@ class Account extends React.Component {
                 <h1>Welcome to Budgie!</h1>
                 <div className="start">
 
-                    <p>Do you want to create an account?</p>
-                    <p>or login?</p>
+                    <p>Do you want to create an account? or login?</p>
                     <form onSubmit={this.handleInput}>
                         <button id="create">Create account</button>
                         <button id="login">Login</button>
@@ -90,7 +89,7 @@ class Account extends React.Component {
         let name = document.querySelector('input[name="Name"]').value;
         let budget = document.querySelector('input[name="budget"]').value;
 
-        const accountData = {
+        let accountData = {
             username: username,
             password: password,
             name: name,
@@ -139,8 +138,8 @@ class Account extends React.Component {
         let password = document.querySelector('input[name="Password"]').value;
         url= url +'?username=' + username + '&password=' + password;
         try{
-            const response = await fetch(url);
-            const JsonData = await response.json();
+            let response = await fetch(url);
+            let JsonData = await response.json();
             if (JsonData.error){
                 document.querySelector('#unpw').style.display = 'block';
 
