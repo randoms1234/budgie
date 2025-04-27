@@ -17,7 +17,7 @@ class Account extends React.Component {
     }
     render() {
         if ( this.state.accountState === 1){
-            url = 'https://dev.connorrichardson.co.uk/api.php';
+            url = 'https://dev.connorrichardson.co.uk/api.php';//reset api request url
             return <App accountName={this.state.accountName}
             accountBalance={this.state.accountBalance}
             accountBudget={this.state.accountBudget}
@@ -31,11 +31,9 @@ class Account extends React.Component {
 
         return (
             <div className="App-headera">
-                <h1>Hello!</h1>
                 <h1>Welcome to Budgie!</h1>
                 <div className="start">
-
-                    <p>Do you want to create an account? or login?</p>
+                    <p>Please Login or create an account to get started</p>
                     <form onSubmit={this.handleInput}>
                         <button id="create">Create account</button>
                         <button id="login">Login</button>
@@ -49,7 +47,6 @@ class Account extends React.Component {
                     </form>
                     <p id="unpw">Incorrect Username or password!</p>
                     <button id="back" onClick={this.goBack}>Back</button>
-
                 </div>
                 <div className="createAccount">
                     <form onSubmit={this.handleSubmitCreate}>
@@ -72,15 +69,12 @@ class Account extends React.Component {
            accountState: 2
        })
     }
-
     handleInput = async (evt) => {
         evt.preventDefault();
         const createButton = document.querySelector('#create');
         const loginButton = document.querySelector('#login');
         createButton.onclick = this.handleCreateAccount;
         loginButton.onclick = this.handleLogin;
-
-
     }
     handleSubmitCreate = async (evt) => {
         evt.preventDefault();
@@ -126,14 +120,10 @@ class Account extends React.Component {
                 console.log(error);
             });
 
-
-
     }
 
     handleSubmitLogin = async (evt) => {
         evt.preventDefault();
-
-
         let username = document.querySelector('input[name="Email"]').value;
         let password = document.querySelector('input[name="Password"]').value;
         url= url +'?username=' + username + '&password=' + password;
@@ -167,15 +157,11 @@ class Account extends React.Component {
     handleCreateAccount = () => {
         document.querySelector('.start').style.display = 'none';
         document.querySelector('.createAccount').style.display = 'block';
-
-
     }
 
     handleLogin = () => {
         document.querySelector('.start').style.display = 'none';
         document.querySelector('.login').style.display = 'block';
-
-
     }
 }
 

@@ -27,7 +27,6 @@ class App extends React.Component {
          const accountName = this.props.accountName;
         return(
             <div className="App-header">
-
                 <h1>Budgie</h1>
                 <h2>Welcome {accountName}!</h2>
                 <article id="spending">
@@ -37,9 +36,7 @@ class App extends React.Component {
                     <h3>Add income or add spending</h3>
                     <form onSubmit={this.handleSubmit}>
                         <label>Add income <input type="radio" name="addmoney" value="1"/></label>
-
                         <label>Add Spending <input type="radio" name="addmoney" value="2"/></label>
-
                         <input type="text" placeholder="Enter amount" name="spendamt"/>
                         <input type="submit" value="Submit"/>
                     </form>
@@ -54,7 +51,6 @@ class App extends React.Component {
 
         );
     }
-
     logout = () =>{
         this.setState({
             accountUsername: '',
@@ -66,16 +62,10 @@ class App extends React.Component {
         });
     }
 
-    budgetButton = () =>{
-        if(but === 0){
-            document.querySelector('#budgetChange').style.display = 'block';
-            but = 1;
-        }else{
-            document.querySelector('#budgetChange').style.display = 'none';
-            but = 0;
-        }
-
-    }
+    budgetButton = () => {
+        but = 1 - but; // Toggles `but` between 0 and 1
+        document.querySelector('#budgetChange').style.display = but ? 'block' : 'none';
+    };
     handleBudgetChange = async (evt) =>{
         evt.preventDefault();
         let newBudget = document.querySelector('input[name="budget"]').value;
