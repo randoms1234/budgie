@@ -51,7 +51,7 @@ class Account extends React.Component {
                 <div className="createAccount">
                     <form onSubmit={this.handleSubmitCreate}>
                         <input type="text" placeholder="Name" name="Name"/>
-                        <input type="text" placeholder="Budget" name="budget"/>
+                        <input type="number" placeholder="Budget" name="budget" min="0"/>
                         <input type="email" placeholder="Example@Example.com" name="createEmail"/>
                         <input type="password" placeholder="Password" name="createPassword"/>
                         <input type="submit" value="Submit" name="createAcc"/>

@@ -74,17 +74,16 @@ class Result extends React.Component {
                 <p>
                     Budget Goal: <strong>£{accountBudget}</strong>
                 </p>
+                <p>Amount needed to reach Budget Goal:</p>
+                <p><strong>£{budgDiff}</strong></p>
                 <p className="balance" style={balanceStyle}>
-                    Balance: <strong>£{accountBalance}</strong>
+                    Current Balance: <strong>£{accountBalance}</strong>
                 </p>
                 <p>
                     Total Income Added: <strong>£{accountIncome}</strong>
                 </p>
                 <p>
                     Total Spent: <strong>£{accountSpent}</strong>
-                </p>
-                <p>
-                    Amount needed to reach Budget Goal: <strong>£{budgDiff}</strong>
                 </p>
             </div>
         );

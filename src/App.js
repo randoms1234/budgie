@@ -35,14 +35,14 @@ class App extends React.Component {
                 <article id="budgeting">
                     <h3>Add income or add spending</h3>
                     <form onSubmit={this.handleSubmit}>
-                        <label>Add income <input type="radio" name="addmoney" value="1"/></label>
+                        <label htmlFor="addmoney">Add income <input type="radio" name="addmoney" value="1"/></label>
                         <label>Add Spending <input type="radio" name="addmoney" value="2"/></label>
-                        <input type="text" placeholder="Enter amount" name="spendamt"/>
+                        <input type="number" placeholder="Enter amount" name="spendamt" step="any" min="0"/>
                         <input type="submit" value="Submit"/>
                     </form>
                     <button onClick={this.budgetButton} id="budgBut">Change Budget Goal</button>
                     <form onSubmit={this.handleBudgetChange} id="budgetChange">
-                        <input type="text" placeholder="Enter new Budget Goal" name="budget"/>
+                        <input type="number" placeholder="Enter new Budget Goal" name="budget" min="0" step="any"/>
                         <input type="submit" value="Submit"/>
                     </form>
                     <button id="logout" onClick={this.logout}>Logout</button>
