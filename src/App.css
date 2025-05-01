@@ -18,11 +18,11 @@ html{
 
 .App-header {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
-  gap: 20px; /* Spacing between grid items */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   padding: 20px;
-  justify-items: center; /* Center items horizontally */
-  align-items: start; /* Align items at the start vertically */
+  justify-items: center;
+  align-items: start;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -30,10 +30,10 @@ html{
 
 .App-header h1,
 .App-header h2 {
-  grid-column: 1 / -1; /* Make both h1 and h2 span the entire width of the grid */
-  margin: 0; /* Remove default margins */
-  text-align: center; /* Keep text centered */
-  width: 100%; /* Explicitly make the element span the full container width */
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: center;
+  width: 100%;
 }
 .App-header p, .App-headera p{
   padding-left: 1em;
@@ -43,11 +43,11 @@ html{
 }
 
 .App-headera {
-  display: flex; /* Use Flexbox for easy centering */
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  min-height: 100vh; /* Ensure the container takes up the full height of the screen */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   text-align: center;
   padding: 20px;
   font-size: calc(10px + 2vmin);
@@ -55,50 +55,50 @@ html{
 }
 
 .App-headera h1 {
-  margin: 10px 0; /* Add vertical spacing between headings */
+  margin: 10px 0;
 }
 
 .start,
 .login,
 .createAccount,
 #budgeting, #spending{
-  justify-content: center; /* Center content within the form container */
-  margin: 20px 0; /* Vertical spacing between sections */
+  justify-content: center;
+  margin: 20px 0;
   padding: 20px 55px 20px 20px;
   width: 100%;
-  max-width: 400px; /* Restrict the form container width */
-  background-color: #ffffff; /* Optional: Add white background for forms */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a light shadow for aesthetics */
-  border-radius: 8px; /* Optional: Rounded corners */
+  max-width: 400px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   color: black;
 }
 .start,
 .login,
 .createAccount {
   display: flex;
-  flex-direction: column; /* Stack form elements vertically */
-  align-items: center; /* Center form items */
-  justify-content: center; /* Center content within the form container */
-  margin: 20px 0; /* Vertical spacing between sections */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
   padding: 20px 55px 20px 20px;
   width: 100%;
-  max-width: 400px; /* Restrict the form container width */
-  background-color: #ffffff; /* Optional: Add white background for forms */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a light shadow for aesthetics */
-  border-radius: 8px; /* Optional: Rounded corners */
+  max-width: 400px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   color: black;
 }
 
 .start p,
 .login p,
 .createAccount p {
-  margin: 10px 0; /* Spacing between paragraphs */
+  margin: 10px 0;
 }
 
 .start form,
 .login form,
 .createAccount form {
-  width: 100%; /* Forms take full width of the container */
+  width: 100%;
 }
 
 .start button,
@@ -112,9 +112,9 @@ html{
 #budgeting input,
 #spending input{
   margin: 10px 0 10px 10px;
-  width: 100%; /* Form inputs/buttons take full width of the container */
-  padding: 10px; /* Add padding for better usability */
-  font-size: 1rem; /* Adjust font size for readability */
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
 }
 .createAccount button,
 .createAccount input[type="submit"],
@@ -131,8 +131,8 @@ html{
 }
 @media (max-width: 768px) { /* For screens smaller than 768px (tablet and smartphone sizes) */
   .App-header {
-    grid-template-columns: 1fr; /* Use a single column layout */
-    gap: 10px; /* Reduce gap between elements */
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
   .start,
   .login,
